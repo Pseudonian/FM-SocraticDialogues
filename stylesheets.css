@@ -1,1 +1,15 @@
+body {
+    background-color: #111111
+}
 
+#quoteScreen{
+    position: relative;
+    width: 1000px;
+    text-align: center;
+    left: 50%;
+    margin-left: -500px;
+}
+
+#displayQuote{
+    font-size: 2em;
+}
