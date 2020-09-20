@@ -1,15 +1,81 @@
-body {
-    background-color: #111111
+body{
+    margin: 0;
+    background-color: #111111;
 }
 
-#quoteScreen{
+.grid {
+    position: relative;
+    top: 60px;
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    justify-content: center;
+    align-content: center;
+    grid-gap: 10px;
+}
+
+.radio{
+    cursor: pointer;
+}
+
+#lightbox{
+    position: fixed;
+    top: 100px;
+    z-index: 1000;
+    top: 0;
+    width: 30%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .7);
+    display: none;
+}
+
+#lightbox.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#quote{
     position: relative;
     width: 1000px;
-    text-align: center;
+    height: 75px;
     left: 50%;
     margin-left: -500px;
+    text-align: center;
 }
 
 #displayQuote{
     font-size: 2em;
+}
+#instructions{
+    position: relative;
+    top: 50px;
+    width: 800px;
+    left: 50%;
+    margin-left: -415px;
+    text-align: center;
+}
+#songCredit{
+    position: relative;
+    top: 50px;
+    width: 800px;
+    left: 50%;
+    margin-left: -415px;
+    text-align: center;
+}
+
+#pauseMusic{
+    position: relative;
+    top: 80px;
+    width: 200px;
+    left: 50%;
+    margin-left: -118px;
+    text-align: center;
+}
+
+#disclaimer{
+    position: relative;
+    top: 75px;
+    width: 800px;
+    left: 50%;
+    margin-left: -400px;
 }

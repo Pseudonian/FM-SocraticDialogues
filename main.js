@@ -5,9 +5,14 @@ function loadApp(){
         user = {
             quotes: generateBaseQuotes(),
             currentSong: 0,
-            quoteInterval: 10, // in seconds
+            quoteInterval: 15, // in seconds
         }
         setQuote();
+}
+
+function saveUserData() { //local saving using localStorage. Saves every 5 seconds or on exit.
+    const p = Object.assign({}, user);
+    localStorage.setItem("socraticSave", btoa(JSON.stringify(p)))
 }
 
 function generateBaseQuotes(){ // These are quotes that are generated using a predefined list. Generated at random from https://wisdomquotes.com/life-quotes/
@@ -62,7 +67,7 @@ function setQuoteIntervalSpeed(t){
 function setQuote(){
     let el = document.getElementById('displayQuote');
     let randomInt = Math.floor(Math.random() * user.quotes.length);
-    el.textContent = "''" + user.quotes[randomInt] + "''"; 
+    el.textContent = "''"+user.quotes[randomInt]+"''"; 
 }
 
 function globalTimer(){
@@ -73,6 +78,28 @@ function globalTimer(){
     }
 }
 
+creditArray = ['Almost New', 'Angevin', 'Ashton Manor', 'Clean Soul', 'Dreams Become Real', 'Fresh Air', 'Mystery Bazaar', 'Summer Day', 'Water Lily']
+
+function audioChange(i){ //perhaps spaghetti code but I am too tired to fix this right now lol
+    musicStop()
+
+    let la = document.getElementsByClassName('radio');
+    for(let k=0; k<la.length; k++){
+        ((i-1) === k) ? (la[k].style.backgroundColor = "purple") : (la[k].style.backgroundColor = "#111111")
+    }
+
+    document.getElementById('songCredit').style.display = "block"
+    document.getElementById('songName').textContent = creditArray[i-1]
+
+    let el = document.getElementById('audio'+i);
+    el.play();
+}
+
+function musicStop(){
+    var silence = document.getElementsByTagName('audio'); //We're going to need to pause all music before we can play the next song.
+    for(let j=0; j<silence.length; j++){silence[j].pause();}
+}
+
 function intervalFunctions(){
     setInterval(globalTimer, 1000);
 }
@@ -80,4 +107,28 @@ function intervalFunctions(){
 setTimeout(function(){
     intervalFunctions();
     loadApp();
+})
+
+//lightbox functionality
+var lightbox = document.createElement('div')
+lightbox.id = 'lightbox'
+document.body.appendChild(lightbox)
+
+var radio_shows = document.querySelectorAll('img')
+radio_shows.forEach(show => {
+    show.addEventListener('click', e => {
+        lightbox.classList.add('active')
+        var box = document.createElement("img")
+        box.src = show.src
+        while (lightbox.firstChild){
+            lightbox.removeChild(lightbox.firstChild)
+        }
+        lightbox.appendChild(box)
+    })
+})
+
+lightbox.addEventListener('click', e => {
+    if (e.target !== e.currentTarget) return
+    lightbox.classList.remove('active')
+    lightbox
 })
