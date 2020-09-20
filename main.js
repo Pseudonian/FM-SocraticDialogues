@@ -2,12 +2,24 @@ var user = {}
 var quoteTimer = 0;
 
 function loadApp(){
+
+    const save = localStorage.getItem("socraticSave");
+    const data = save ? JSON.parse(atob(save)) : null;
+
+    if (data) {user = data; user.currentSong = 0;} // Loads the old save data
+    else{ // Initializes the user's save from older sessions.
         user = {
             quotes: generateBaseQuotes(),
             currentSong: 0,
             quoteInterval: 15, // in seconds
         }
-        setQuote();
+    }
+
+}
+
+function saveUserData() { //local saving using localStorage. Saves every 5 seconds or on exit.
+    const p = Object.assign({}, user);
+    localStorage.setItem("socraticSave", btoa(JSON.stringify(p)))
 }
 
 function saveUserData() { //local saving using localStorage. Saves every 5 seconds or on exit.
