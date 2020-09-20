@@ -2,12 +2,24 @@ var user = {}
 var quoteTimer = 0;
 
 function loadApp(){
+
+    const save = localStorage.getItem("socraticSave");
+    const data = save ? JSON.parse(atob(save)) : null;
+
+    if (data) {user = data; user.currentSong = 0;} // Loads the old save data
+    else{ // Initializes the user's save from older sessions.
         user = {
             quotes: generateBaseQuotes(),
             currentSong: 0,
-            quoteInterval: 10, // in seconds
+            quoteInterval: 15, // in seconds
         }
-        setQuote();
+    }
+
+}
+
+function saveUserData() { //local saving using localStorage. Saves every 5 seconds or on exit.
+    const p = Object.assign({}, user);
+    localStorage.setItem("socraticSave", btoa(JSON.stringify(p)))
 }
 
 function generateBaseQuotes(){ // These are quotes that are generated using a predefined list. Generated at random from https://wisdomquotes.com/life-quotes/
@@ -62,7 +74,7 @@ function setQuoteIntervalSpeed(t){
 function setQuote(){
     let el = document.getElementById('displayQuote');
     let randomInt = Math.floor(Math.random() * user.quotes.length);
-    el.textContent = "''" + user.quotes[randomInt] + "''"; 
+    el.textContent = user.quotes[randomInt]; 
 }
 
 function globalTimer(){
@@ -80,4 +92,18 @@ function intervalFunctions(){
 setTimeout(function(){
     intervalFunctions();
     loadApp();
+})
+
+//lightbox functionality
+var lightbox = document.createElement('div')
+lightbox.id = 'lightbox'
+document.body.appendChild(lightbox)
+
+var radio_shows = document.querySelectorAll('img')
+radio_shows.forEach(show => {
+    show.addEventListener('click', e => {
+        lightbox.classList.add('active')
+        var box = document.getElementById("main_box")
+        lightbox.appendChild(box)
+    })
 })

@@ -3,18 +3,39 @@
 
     <head>
         <meta charset= "UTF-8">
+        <title>FM-SocraticDialogue</title>
         <script src = "main.js"></script>
-        <style src = "stylsheets.css"></style>
+        <link rel = "stylesheet" href = "stylesheets.css"></link>
+        <script defer src="main.js"></script>
+
     </head>
 
     <body>
-        <div id="quoteScreen">
-        <p id="displayQuote" style="color: orchid"></p>
+        <div class = "wrapper total">
+            <!--This is going to have a light-box kind of style for multiple radio stations-->
+            <div class = "light-box">
+                <!--All the background radios waiting for the user to click on them-->
+                <div class = "grid">
+                    <img class = "radio" src="https://source.unsplash.com/300x300?bridge">
+                    <img class = "radio" src="https://source.unsplash.com/300x300?dog">
+                    <img class = "radio" src="https://source.unsplash.com/300x300?people">
+                    <img class = "radio" src="https://source.unsplash.com/300x300?car">
+                    <img class = "radio" src="https://source.unsplash.com/300x300?toy">
+                    <img class = "radio" src="https://source.unsplash.com/300x300?clock">
+                    <img class = "radio" src="https://source.unsplash.com/300x300?rabbit">
+                    <img class = "radio" src="https://source.unsplash.com/300x300?soap">
+                    <img class = "radio" src="https://source.unsplash.com/300x300?hand">
+                </div>
+            </div>
+            <div id = "main_box"></div>
+            <p id="displayQuote" style="color: orchid"></p>
         </div>
+
+        <!--If we get done with this early, it would be cool to make an option where people can make their own recordings and submit them to individual radio stations-->
     </body>
 
     <footer>
 
     </footer>
-    <link rel="stylesheet" href="stylesheets.css">
+
 </html>

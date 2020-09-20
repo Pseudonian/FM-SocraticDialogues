@@ -1,15 +1,30 @@
-body {
-    background-color: #111111
+body{
+    margin: 0;
 }
 
-#quoteScreen{
-    position: relative;
-    width: 1000px;
-    text-align: center;
-    left: 50%;
-    margin-left: -500px;
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
+    justify-content: center;
+    align-content: center;
+    grid-gap: 10px;
 }
 
-#displayQuote{
-    font-size: 2em;
+.radio{
+    cursor: pointer;
+}
+
+#lightbox{
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .3);
+}
+
+#lightbox.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
