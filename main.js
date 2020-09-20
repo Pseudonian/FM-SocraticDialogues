@@ -22,6 +22,11 @@ function saveUserData() { //local saving using localStorage. Saves every 5 secon
     localStorage.setItem("socraticSave", btoa(JSON.stringify(p)))
 }
 
+function saveUserData() { //local saving using localStorage. Saves every 5 seconds or on exit.
+    const p = Object.assign({}, user);
+    localStorage.setItem("socraticSave", btoa(JSON.stringify(p)))
+}
+
 function generateBaseQuotes(){ // These are quotes that are generated using a predefined list. Generated at random from https://wisdomquotes.com/life-quotes/
     let quote = ['Change your thoughts and you change your world. -Norman Vincent Peale',
                 'Life is from the inside out. When you shift on the inside, life shifts on the outside. -Kamal Ravikant',
@@ -74,7 +79,7 @@ function setQuoteIntervalSpeed(t){
 function setQuote(){
     let el = document.getElementById('displayQuote');
     let randomInt = Math.floor(Math.random() * user.quotes.length);
-    el.textContent = user.quotes[randomInt]; 
+    el.textContent = "''"+user.quotes[randomInt]+"''"; 
 }
 
 function globalTimer(){
@@ -83,6 +88,28 @@ function globalTimer(){
         quoteTimer = 0;
         setQuote();
     }
+}
+
+creditArray = ['Almost New', 'Angevin', 'Ashton Manor', 'Clean Soul', 'Dreams Become Real', 'Fresh Air', 'Mystery Bazaar', 'Summer Day', 'Water Lily']
+
+function audioChange(i){ //perhaps spaghetti code but I am too tired to fix this right now lol
+    musicStop()
+
+    let la = document.getElementsByClassName('radio');
+    for(let k=0; k<la.length; k++){
+        ((i-1) === k) ? (la[k].style.backgroundColor = "purple") : (la[k].style.backgroundColor = "#111111")
+    }
+
+    document.getElementById('songCredit').style.display = "block"
+    document.getElementById('songName').textContent = creditArray[i-1]
+
+    let el = document.getElementById('audio'+i);
+    el.play();
+}
+
+function musicStop(){
+    var silence = document.getElementsByTagName('audio'); //We're going to need to pause all music before we can play the next song.
+    for(let j=0; j<silence.length; j++){silence[j].pause();}
 }
 
 function intervalFunctions(){

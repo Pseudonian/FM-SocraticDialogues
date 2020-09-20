@@ -11,25 +11,60 @@
     </head>
 
     <body>
+        <audio id="audio1">
+            <source src="music/Almost New.mp3">
+        </audio>
+        <audio id="audio2">
+            <source src="music/Angevin.mp3">
+        </audio>
+        <audio id="audio3">
+            <source src="music/Ashton Manor.mp3">
+        </audio>
+        <audio id="audio4">
+            <source src="music/Clean Soul.mp3">
+        </audio>
+        <audio id="audio5">
+            <source src="music/Dreams Become Real.mp3">
+        </audio>
+        <audio id="audio6">
+            <source src="music/Fresh Air.mp3">
+        </audio>
+        <audio id="audio7">
+            <source src="music/Mystery Bazaar.mp3">
+        </audio>
+        <audio id="audio8">
+            <source src="music/Summer Day.mp3">
+        </audio>
+        <audio id="audio9">
+            <source src="music/Clean Soul.mp3">
+        </audio>
+        <div id="quote">
+            <p id="displayQuote" style="color: orchid"></p>
+        </div>
+        <p id="instructions" style="color: gold">Welcome to the FM-SocraticDialogue, The one stop shop for inspirational quotes and easy-listening. Click on a numpad to play a song by Kevin Macleod!</p>
+        <p id="songCredit" style="color: white; display: none;">Current Song: <span id="songName" style="color: orchid;"></span> by Kevin Macleod</p>
         <div class = "wrapper total">
             <!--This is going to have a light-box kind of style for multiple radio stations-->
             <div class = "light-box">
                 <!--All the background radios waiting for the user to click on them-->
                 <div class = "grid">
-                    <img class = "radio" src="https://source.unsplash.com/300x300?bridge">
-                    <img class = "radio" src="https://source.unsplash.com/300x300?dog">
-                    <img class = "radio" src="https://source.unsplash.com/300x300?people">
-                    <img class = "radio" src="https://source.unsplash.com/300x300?car">
-                    <img class = "radio" src="https://source.unsplash.com/300x300?toy">
-                    <img class = "radio" src="https://source.unsplash.com/300x300?clock">
-                    <img class = "radio" src="https://source.unsplash.com/300x300?rabbit">
-                    <img class = "radio" src="https://source.unsplash.com/300x300?soap">
-                    <img class = "radio" src="https://source.unsplash.com/300x300?hand">
+                    <img class = "radio" src="pictures/radio1.png" onclick="audioChange(1)">
+                    <img class = "radio" src="pictures/radio2.png" onclick="audioChange(2)">
+                    <img class = "radio" src="pictures/radio3.png" onclick="audioChange(3)">
+                    <img class = "radio" src="pictures/radio4.png" onclick="audioChange(4)">
+                    <img class = "radio" src="pictures/radio5.png" onclick="audioChange(5)">
+                    <img class = "radio" src="pictures/radio6.png" onclick="audioChange(6)">
+                    <img class = "radio" src="pictures/radio7.png" onclick="audioChange(7)">
+                    <img class = "radio" src="pictures/radio8.png" onclick="audioChange(8)">
+                    <img class = "radio" src="pictures/radio9.png" onclick="audioChange(9)">
                 </div>
             </div>
             <div id = "main_box"></div>
-            <p id="displayQuote" style="color: orchid"></p>
         </div>
+        <button id="pauseMusic" onclick="musicStop()">End the current song.</button>
+        <p id="disclaimer" style="color: white">Almost New, Angevin, Ashton Manor, Clean Soul, Dreams Become Real, Fresh Air, Mystery Bazaar, Summer Day, and Water Lily are all by Kevin MacLeod (incompetech.com)
+            Licensed under Creative Commons: By Attribution 4.0 License
+            http://creativecommons.org/licenses/by/4.0/</p>
 
         <!--If we get done with this early, it would be cool to make an option where people can make their own recordings and submit them to individual radio stations-->
     </body>
