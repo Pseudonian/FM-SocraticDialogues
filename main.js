@@ -67,7 +67,17 @@ var radio_shows = document.querySelectorAll('img')
 radio_shows.forEach(show => {
     show.addEventListener('click', e => {
         lightbox.classList.add('active')
-        var box = document.getElementById("main_box")
+        var box = document.createElement("img")
+        box.src = show.src
+        while (lightbox.firstChild){
+            lightbox.removeChild(lightbox.firstChild)
+        }
         lightbox.appendChild(box)
     })
+})
+
+lightbox.addEventListener('click', e => {
+    if (e.target !== e.currentTarget) return
+    lightbox.classList.remove('active')
+    lightbox
 })
